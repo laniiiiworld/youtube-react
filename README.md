@@ -5,7 +5,7 @@
 
 ## 기능
 
--
+- React Router를 사용하여 메인/검색/상세 등의 각 페이지로 이동
 
 ## 사용 기술
 
@@ -17,7 +17,7 @@
 
 ### 라이브러리
 
-- React Router
+- React Router (v6.15.0)
 - TanStack Query
 
 ### API
