@@ -17,13 +17,10 @@ export default function Videos() {
   if (error) return <p>Somthing is wrong!</p>;
 
   return (
-    <div>
-      Videos {keyword ? `🔍 ${keyword}` : '🔥'}
-      <ul>
-        {videos.map((video) => (
-          <VideoCard key={video.id} video={video} />
-        ))}
-      </ul>
-    </div>
+    <ul className='grid gap-2 gap-y-4 px-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
+      {videos.map((video) => (
+        <VideoCard key={video.id} video={video} />
+      ))}
+    </ul>
   );
 }

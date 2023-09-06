@@ -24,7 +24,8 @@
 - Axios (v1.5.0)
 - React Router (v6.15.0)
 - TanStack Query (v4.33.0)
-- React Icons
+- React Icons (v4.10.1)
+- timeago.js (v4.0.2)
 
 ### API
 
@@ -34,3 +35,9 @@
 ### 배포
 
 - Vercel
+
+## 개선사항
+
+- Loading, Error 컴포넌트로 분리
+- 테스트코드 작성
+- 최근 검색어 기능 추가
