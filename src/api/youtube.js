@@ -7,6 +7,18 @@ export default class Youtube {
     return keyword ? this.#searchByKeyword(keyword) : this.#mostPopular();
   }
 
+  async channelImageUrl(channelId) {
+    const response = await this.apiClient.channel({
+      part: 'snippet, statistics',
+      id: channelId,
+    });
+    return response.data.items[0].snippet.thumbnails.default.url;
+  }
+
+  async relatedVideos(channelId) {
+    return this.#searchByKeyword(channelId);
+  }
+
   async #searchByKeyword(keyword) {
     const response = await this.apiClient.search({
       part: 'snippet',

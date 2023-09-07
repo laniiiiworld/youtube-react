@@ -8,4 +8,8 @@ export default class FakeYoutubeClient {
   async videos() {
     return await axios.get(`/videos/popular.json`);
   }
+
+  async channel() {
+    return await axios.get(`/videos/channel.json`);
+  }
 }
