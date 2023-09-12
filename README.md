@@ -32,6 +32,12 @@
 - [YouTube Data API](https://developers.google.com/youtube/v3/docs)
 - [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference)
 
+### 테스트
+
+- Jest
+- Testing Library
+- Cypress (v13.1.0)
+
 ### 배포
 
 - Vercel
@@ -39,7 +45,6 @@
 ## 개선사항
 
 - Loading, Error 컴포넌트로 분리
-- 테스트코드 작성
 - 상세 페이지 채널 이미지 URL을 가져오지 못한 경우, 채널 명 앞글자를 따서 이미지로 제공
 - 상세 페이지 동영상 설명 더보기/간략히 기능 구현
 - dark/light 모드 구현

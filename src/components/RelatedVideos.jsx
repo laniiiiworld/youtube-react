@@ -15,10 +15,14 @@ export default function RelatedVideos({ keyword }) {
   if (error) return <p>Somthing is wrong!</p>;
 
   return (
-    <ul>
-      {videos.map((video) => (
-        <VideoCard key={video.id} video={video} type='list' />
-      ))}
-    </ul>
+    <>
+      {videos && (
+        <ul>
+          {videos.map((video) => (
+            <VideoCard key={video.id} video={video} type='list' />
+          ))}
+        </ul>
+      )}
+    </>
   );
 }
