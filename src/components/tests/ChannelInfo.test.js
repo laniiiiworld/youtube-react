@@ -32,7 +32,7 @@ describe('ChannelInfo', () => {
     fakeYoutube.channelImageUrl.mockImplementation(() => 'url');
     renderChannerInfo();
 
-    await waitFor(() => expect(screen.getByRole('img')).toBeInTheDocument());
+    await screen.findByRole('img');
   });
 
   function renderChannerInfo() {
