@@ -3,8 +3,8 @@ export default class Youtube {
     this.apiClient = apiClient;
   }
 
-  search(keyword) {
-    return keyword ? this.#searchByKeyword(keyword) : this.#mostPopular();
+  search(keyword, pageToken) {
+    return keyword ? this.#searchByKeyword(keyword, pageToken) : this.#mostPopular(pageToken);
   }
 
   async channelImageUrl(channelId) {
@@ -15,14 +15,10 @@ export default class Youtube {
     return response.data.items[0].snippet.thumbnails.default.url;
   }
 
-  async relatedVideos(channelId) {
-    return this.#searchByKeyword(channelId);
-  }
-
-  async #searchByKeyword(keyword) {
-    const response = await this.apiClient.search({
+  async relatedVideos(keyword) {
+    const response = await this.apiClient.related({
       part: 'snippet',
-      maxResults: 25,
+      maxResults: 50,
       q: keyword,
       regionCode: 'kr',
       type: 'video',
@@ -33,15 +29,35 @@ export default class Youtube {
     return data.map((item) => ({ ...item, id: item.id.videoId }));
   }
 
-  async #mostPopular() {
-    const response = await this.apiClient.videos({
+  async #searchByKeyword(keyword, pageToken = null) {
+    const response = await this.apiClient.search({
       part: 'snippet',
       maxResults: 25,
+      q: keyword,
+      regionCode: 'kr',
+      type: 'video',
+      videoSyndicated: true,
+      safeSearch: 'strict',
+      pageToken,
+    });
+    const data = response.data.items;
+    return {
+      data: data.map((item) => ({ ...item, id: item.id.videoId })),
+      nextPageToken: response.data.nextPageToken,
+    };
+  }
+
+  async #mostPopular(pageToken = null) {
+    const param = {
+      part: 'snippet',
+      maxResults: 10,
       chart: 'mostPopular',
       regionCode: 'kr',
       videoSyndicated: true,
-    });
+      pageToken,
+    };
+    const response = await this.apiClient.videos(param);
     const data = response.data.items;
-    return data;
+    return { data, nextPageToken: response.data.nextPageToken };
   }
 }

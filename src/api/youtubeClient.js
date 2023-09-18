@@ -12,6 +12,10 @@ export default class YoutubeClient {
     return await this.httpClient.get('search', { params });
   }
 
+  async related(params) {
+    return await this.httpClient.get('search', { params });
+  }
+
   async videos(params) {
     return await this.httpClient.get('videos', { params });
   }

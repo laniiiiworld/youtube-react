@@ -5,6 +5,7 @@ describe('YouTube App - desktop mode', () => {
   beforeEach(() => {
     cy.intercept('GET', /(popular)/g, { fixture: 'popular.json' });
     cy.intercept('GET', /(search)/g, { fixture: 'search.json' });
+    cy.intercept('GET', /(related)/g, { fixture: 'related.json' });
     cy.viewport('macbook-13');
     cy.visit('/');
   });
@@ -34,6 +35,6 @@ describe('YouTube App - desktop mode', () => {
     cy.findByAltText('Channel Title');
     cy.findByText('Channel Title');
     cy.findByText('This is a description of a popular video.');
-    cy.findByText('Search Video').should('exist');
+    cy.findByText('Related Video').should('exist');
   });
 });
