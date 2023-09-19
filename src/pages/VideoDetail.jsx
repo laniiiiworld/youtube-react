@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import ChannelInfo from '../components/ChannelInfo';
 import RelatedVideos from '../components/RelatedVideos';
+import { unescapeSpecialCharacters } from '../util/string';
 
 export default function VideoDetail() {
   const {
@@ -27,9 +28,9 @@ export default function VideoDetail() {
           className='aspect-video'
         />
         <div>
-          <h2 className='text-2xl font-bold my-4'>{title}</h2>
+          <h2 className='text-2xl font-bold my-4'>{unescapeSpecialCharacters(title)}</h2>
           <ChannelInfo id={channelId} name={channelTitle} />
-          <pre className='whitespace-pre-line mb-8'>{description}</pre>
+          <pre className='whitespace-pre-line mb-8'>{unescapeSpecialCharacters(description)}</pre>
         </div>
       </article>
       <section className='basis-2/6 px-4 lg:pl-0'>
