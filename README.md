@@ -11,6 +11,7 @@
 - Axios를 이용하여 크로스 브라우징 및 에러 핸들링 강화
 - Context API를 만들어 유튜브 API의 실제 서비스 환경과 개발환경을 구분하여 관리
 - useInfiniteQuery()와 react-intersection-observer를 이용하여 무한 스크롤 구현
+- 로딩 스켈레톤 구현
 
 ## 사용 기술
 

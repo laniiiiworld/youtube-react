@@ -15,7 +15,7 @@ describe('RelatedVideos', () => {
     fakeYoutube.relatedVideos.mockImplementation(() => videos);
     const { asFragment } = renderRelatedVideos();
 
-    await waitForElementToBeRemoved(() => screen.queryByText('Loading...'));
+    await waitForElementToBeRemoved(() => screen.queryAllByTestId('skeleton'));
 
     expect(asFragment()).toMatchSnapshot();
   });
@@ -32,7 +32,9 @@ describe('RelatedVideos', () => {
     fakeYoutube.relatedVideos.mockImplementation(() => videos);
     renderRelatedVideos();
 
-    expect(screen.getByText('Loading...')).toBeInTheDocument();
+    const skeletonComponents = screen.getAllByTestId('skeleton');
+
+    expect(skeletonComponents).toHaveLength(10);
   });
 
   it('renders error', async () => {

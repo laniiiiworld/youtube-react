@@ -4,6 +4,8 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import VideoCard from '../components/VideoCard';
 import { useYoutubeApi } from '../context/YoutubeApiContext';
 import { useInView } from 'react-intersection-observer';
+import Skeleton from '../components/loading/Skeleton';
+import SkeletonInner from '../components/loading/SkeletonInner';
 
 export default function Videos() {
   const [showMore, setShowMore] = useState(true);
@@ -11,6 +13,7 @@ export default function Videos() {
   const { youtube } = useYoutubeApi();
   const {
     isLoading, //
+    isFetchingNextPage,
     error,
     data,
     fetchNextPage,
@@ -37,21 +40,25 @@ export default function Videos() {
     }
   }, [inView, hasNextPage, fetchNextPage, data, showMore]);
 
-  if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Somthing is wrong!</p>;
-  const { pages } = data;
 
   return (
     <>
       <ul className='grid gap-2 gap-y-4 px-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
-        {pages.map((page) =>
-          page.data.map(
-            (video) => <VideoCard key={video.id} video={video} type='grid' /> //
-          )
+        {!isLoading &&
+          data.pages.map((page) =>
+            page.data.map(
+              (video) => <VideoCard key={video.id} video={video} type='grid' /> //
+            )
+          )}
+        {showMore && (
+          <li ref={opserverRef} data-testid='wrapper' className='animate-pulse flex flex-col'>
+            <SkeletonInner type='grid' />
+          </li>
         )}
+        {((isLoading && showMore) || isFetchingNextPage) &&
+          Array.from({ length: 9 }, (_, i) => <Skeleton key={i} type='grid' />)}
       </ul>
-      <div ref={opserverRef} className='m-20' data-testid='wrapper'></div>
-      {showMore && <div className='w-full h-20'></div>}
     </>
   );
 }

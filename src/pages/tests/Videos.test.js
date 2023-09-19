@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import { Route } from 'react-router-dom';
 import { withRouter, withAllContexts } from '../../tests/utils';
 import Videos from '../Videos';
@@ -29,9 +29,11 @@ describe('Videos component', () => {
     const wrapper = await screen.findByTestId('wrapper');
     const instance = intersectionMockInstance(wrapper);
 
+    await waitForElementToBeRemoved(() => screen.queryAllByTestId('skeleton'));
+
     expect(instance.observe).toHaveBeenCalledWith(wrapper);
     expect(fakeYoutube.search).toHaveBeenCalledWith(undefined, undefined);
-    await waitFor(() => expect(screen.getAllByRole('listitem')).toHaveLength(fakeVideos.length));
+    await waitFor(() => expect(screen.getAllByRole('listitem')).toHaveLength(fakeVideos.length + 1));
   });
 
   it('when keyword is specified, renders search results', async () => {
@@ -40,16 +42,20 @@ describe('Videos component', () => {
     const wrapper = await screen.findByTestId('wrapper');
     const instance = intersectionMockInstance(wrapper);
 
+    await waitForElementToBeRemoved(() => screen.queryAllByTestId('skeleton'));
+
     expect(instance.observe).toHaveBeenCalledWith(wrapper);
     expect(fakeYoutube.search).toHaveBeenCalledWith(keyword, undefined);
-
-    await waitFor(() => expect(screen.getAllByRole('listitem')).toHaveLength(1));
+    await waitFor(() => expect(screen.getAllByRole('listitem')).toHaveLength(1 + 1));
   });
 
   it('renders loading state when items are being fetched', async () => {
     renderWithPath('/');
+    const loadingWrapper = screen.getByTestId('wrapper');
+    const skeletonComponents = screen.getAllByTestId('skeleton');
 
-    expect(screen.getByText(/Loading.../i)).toBeInTheDocument();
+    expect(loadingWrapper).toBeInTheDocument();
+    expect(skeletonComponents).toHaveLength(9);
   });
 
   it('renders error state when fetching items fails', async () => {
