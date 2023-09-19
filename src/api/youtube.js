@@ -32,7 +32,7 @@ export default class Youtube {
   async #searchByKeyword(keyword, pageToken = null) {
     const response = await this.apiClient.search({
       part: 'snippet',
-      maxResults: 25,
+      maxResults: 10,
       q: keyword,
       regionCode: 'kr',
       type: 'video',

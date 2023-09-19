@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import VideoCard from '../components/VideoCard';
@@ -6,6 +6,7 @@ import { useYoutubeApi } from '../context/YoutubeApiContext';
 import { useInView } from 'react-intersection-observer';
 
 export default function Videos() {
+  const [showMore, setShowMore] = useState(true);
   const { keyword, videoId } = useParams();
   const { youtube } = useYoutubeApi();
   const {
@@ -29,29 +30,28 @@ export default function Videos() {
   });
 
   useEffect(() => {
-    if (inView && hasNextPage) {
+    if (inView && hasNextPage && showMore) {
+      const count = (data.pages.length + 1) * data.pages[0].data.length;
+      setShowMore(inView && hasNextPage && count < 100);
       fetchNextPage();
     }
-  }, [inView, hasNextPage, fetchNextPage]);
+  }, [inView, hasNextPage, fetchNextPage, data, showMore]);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Somthing is wrong!</p>;
-  if (!data?.pages) return <></>;
   const { pages } = data;
 
   return (
     <>
       <ul className='grid gap-2 gap-y-4 px-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
-        {pages.map(
-          (page) =>
-            page?.data &&
-            page.data.map(
-              (video) => <VideoCard key={video.id} video={video} type='grid' /> //
-            )
+        {pages.map((page) =>
+          page.data.map(
+            (video) => <VideoCard key={video.id} video={video} type='grid' /> //
+          )
         )}
       </ul>
       <div ref={opserverRef} className='m-20' data-testid='wrapper'></div>
-      <div className='w-full h-20'></div>
+      {showMore && <div className='w-full h-20'></div>}
     </>
   );
 }
