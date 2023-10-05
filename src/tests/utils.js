@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { MemoryRouter, Routes } from 'react-router-dom';
+import { DarkModeContext } from '../context/DarkModeContext';
 import { YoutubeApiContext } from '../context/YoutubeApiContext';
 
 export function withRouter(routes, initialEntry = '/') {
@@ -10,12 +11,16 @@ export function withRouter(routes, initialEntry = '/') {
   );
 }
 
-export function withAllContexts(children, youtube) {
+export function withAllContexts(children, youtube = {}, darkMode = false) {
   const testClient = createTestQueryClient();
   return (
-    <YoutubeApiContext.Provider value={{ youtube }}>
-      <QueryClientProvider client={testClient}>{children}</QueryClientProvider>
-    </YoutubeApiContext.Provider>
+    <>
+      <DarkModeContext.Provider value={{ darkMode, toggleDarkMode: () => {} }}>
+        <YoutubeApiContext.Provider value={{ youtube }}>
+          <QueryClientProvider client={testClient}>{children}</QueryClientProvider>
+        </YoutubeApiContext.Provider>
+      </DarkModeContext.Provider>
+    </>
   );
 }
 

@@ -9,7 +9,8 @@ export default function DescriptionToggleButton({ name, handleClick }) {
                       before:left-0
                       before:w-full
                       before:h-full
-                      before:bg-zinc-500
+                      before:bg-zinc-400
+                      before:dark:bg-zinc-500
                       before:rounded-sm
                       before:scale-x-0
                       before:duration-150

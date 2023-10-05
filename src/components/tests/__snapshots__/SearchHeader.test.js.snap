@@ -2,10 +2,10 @@
 
 exports[`SearchHeader renders correctly 1`] = `
 <header
-  className="w-full flex p-4 text-2xl border-b border-zinc-600 mb-4 justify-between"
+  className="w-full flex p-4 text-2xl border-b dark:border-zinc-600 mb-4 justify-between"
 >
   <a
-    className="flex items-center"
+    className="flex items-center select-none"
     href="/"
     onClick={[Function]}
   >
@@ -32,7 +32,7 @@ exports[`SearchHeader renders correctly 1`] = `
       />
     </svg>
     <h1
-      className="font-bold ml-2 text-3xl"
+      className="font-semibold ml-2 text-3xl tracking-tighter"
     >
       YouTube
     </h1>
@@ -42,14 +42,14 @@ exports[`SearchHeader renders correctly 1`] = `
     onSubmit={[Function]}
   >
     <input
-      className="w-full p-2 pl-5 outline-none bg-black text-gray-500 border border-zinc-900 rounded-s-full"
+      className="w-full p-2 pl-5 outline-none border-zinc-300 dark:bg-black dark:text-gray-500 border dark:border-zinc-900 rounded-s-full"
       onChange={[Function]}
       placeholder="Search..."
       type="text"
       value=""
     />
     <button
-      className="bg-zinc-600 hover:bg-zinc-500 px-5 py-3 border border-l-0 border-zinc-900 rounded-e-full"
+      className="bg-zinc-100 hover:bg-zinc-200 border-zinc-300 dark:bg-zinc-600 hover:dark:bg-zinc-500 dark:border-zinc-900 px-5 py-3 border border-l-0 rounded-e-full"
       title="search"
     >
       <svg
@@ -73,10 +73,34 @@ exports[`SearchHeader renders correctly 1`] = `
     </button>
   </form>
   <div
-    className="flex items-center"
+    className="flex items-center gap-4"
   >
     <button
-      className="text-4xl rounded-full hover:bg-zinc-700"
+      className="text-2xl rounded-full p-1.5 text-white bg-zinc-950 hover:bg-zinc-700 dark:text-zinc-950 dark:bg-white dark:text-zinc-950 hover:dark:text-zinc-700"
+      onClick={[Function]}
+      title="dark/light mode"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 16 16"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"
+        />
+      </svg>
+    </button>
+    <button
+      className="text-4xl rounded-full hover:text-zinc-700 hover:dark:bg-zinc-700"
       onClick={[Function]}
       title="github"
     >

@@ -1,33 +1,40 @@
 import { render, screen } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import { Route } from 'react-router-dom';
-import { withRouter } from '../../tests/utils';
+import { withAllContexts, withRouter } from '../../tests/utils';
 import SearchHeader from '../SearchHeader';
 import userEvent from '@testing-library/user-event';
 
 describe('SearchHeader', () => {
   it('renders correctly', () => {
     const component = renderer.create(
-      withRouter(<Route path='/' element={<SearchHeader />} />) //
+      withAllContexts(
+        withRouter(<Route path='/' element={<SearchHeader />} />) //
+      )
     );
     expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('renders with keyword correctly', () => {
     render(
-      withRouter(<Route path='/:keyword' element={<SearchHeader />} />, '/bts') //
+      withAllContexts(
+        withRouter(<Route path='/:keyword' element={<SearchHeader />} />, '/bts') //
+      )
     );
+
     expect(screen.getByDisplayValue('bts')).toBeInTheDocument();
   });
 
   it('navigates to result page on search button clicked', () => {
     const keyword = 'fake keyword';
     render(
-      withRouter(
-        <>
-          <Route path='/' element={<SearchHeader />} />
-          <Route path={`/videos/${keyword}`} element={<p>{`Search result for ${keyword}`}</p>} />
-        </>
+      withAllContexts(
+        withRouter(
+          <>
+            <Route path='/' element={<SearchHeader />} />
+            <Route path={`/videos/${keyword}`} element={<p>{`Search result for ${keyword}`}</p>} />
+          </>
+        )
       )
     );
 

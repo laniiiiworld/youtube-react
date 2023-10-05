@@ -11,6 +11,7 @@
 - Axios를 이용하여 크로스 브라우징 및 에러 핸들링 강화
 - Context API를 만들어 유튜브 API의 실제 서비스 환경과 개발환경을 구분하여 관리
 - useInfiniteQuery()와 react-intersection-observer를 이용하여 무한 스크롤 구현
+- dark/light 모드 구현
 - 로딩 스켈레톤 구현
 - 상세 페이지 동영상 설명 더보기/간략히 기능 구현
 
@@ -50,5 +51,4 @@
 
 - Loading, Error 컴포넌트로 분리
 - 상세 페이지 채널 이미지 URL을 가져오지 못한 경우, 채널 명 앞글자를 따서 이미지로 제공
-- dark/light 모드 구현
 - 최근 검색어 기능 구현

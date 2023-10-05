@@ -9,7 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   @apply w-full h-screen;
   @apply flex flex-col items-center;
-  @apply bg-zinc-900 text-gray-50;
+  @apply bg-white dark:bg-zinc-900 text-zinc-950 dark:text-gray-50;
 }
 
 #root {

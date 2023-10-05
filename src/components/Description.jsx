@@ -25,7 +25,9 @@ export default function Description({ h2Ref, description }) {
   return (
     <div
       onClick={handleMoreClick}
-      className={`mb-8 bg-description rounded-xl p-4 ${!isMore && 'cursor-pointer hover:bg-zinc-700'}`}
+      className={`mb-8 bg-zinc-100 dark:bg-description rounded-xl p-4 ${
+        !isMore && 'cursor-pointer hover:bg-zinc-200 hover:dark:bg-zinc-700'
+      }`}
     >
       <pre ref={preRef} className={`whitespace-pre-line h-24 ${isMore ? 'h-auto' : 'line-clamp-5'}`}>
         {unescapeSpecialCharacters(description)}
