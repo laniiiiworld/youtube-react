@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchArea renders correctly in desktop mode 1`] = `
+Array [
+  <form
+    className=" static w-5/12 flex items-center"
+    onSubmit={[Function]}
+  >
+    <input
+      className="w-full p-2 pl-5 outline-none border-zinc-300 dark:bg-black dark:text-gray-500 border dark:border-zinc-900 rounded-s-full"
+      onChange={[Function]}
+      placeholder="Search..."
+      type="text"
+      value=""
+    />
+    <button
+      className="bg-zinc-100 hover:bg-zinc-200 border-zinc-300 dark:bg-zinc-600 hover:dark:bg-zinc-500 dark:border-zinc-900 px-5 py-3 border border-l-0 rounded-e-full"
+      data-testid="search"
+      title="search"
+      type="submit"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2ZM3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0Z"
+        />
+      </svg>
+    </button>
+  </form>,
+  <div
+    className="hidden"
+  />,
+]
+`;
+
+exports[`SearchArea renders correctly in mobile mode 1`] = `
+Array [
+  <form
+    className="hidden absolute w-full h-full z-10 top-0 left-0 px-3 flex items-center"
+    onSubmit={[Function]}
+  >
+    <input
+      className="w-full p-2 pl-5 outline-none border-zinc-300 dark:bg-black dark:text-gray-500 border dark:border-zinc-900 rounded-s-full"
+      onChange={[Function]}
+      placeholder="Search..."
+      type="text"
+      value=""
+    />
+    <button
+      className="bg-zinc-100 hover:bg-zinc-200 border-zinc-300 dark:bg-zinc-600 hover:dark:bg-zinc-500 dark:border-zinc-900 px-5 py-3 border border-l-0 rounded-e-full"
+      data-testid="search"
+      title="search"
+      type="submit"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2ZM3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0Z"
+        />
+      </svg>
+    </button>
+  </form>,
+  <div
+    className="hidden"
+  />,
+]
+`;
+
+exports[`SearchArea shows search form when you click search button in mobile mode 1`] = `
+Array [
+  <form
+    className=" absolute w-full h-full z-10 top-0 left-0 px-3 flex items-center"
+    onSubmit={[Function]}
+  >
+    <button
+      className="pr-2"
+      onClick={[Function]}
+      title="close"
+      type="button"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"
+        />
+      </svg>
+    </button>
+    <input
+      className="w-full p-2 pl-5 outline-none border-zinc-300 dark:bg-black dark:text-gray-500 border dark:border-zinc-900 rounded-s-full"
+      onChange={[Function]}
+      placeholder="Search..."
+      type="text"
+      value=""
+    />
+    <button
+      className="bg-zinc-100 hover:bg-zinc-200 border-zinc-300 dark:bg-zinc-600 hover:dark:bg-zinc-500 dark:border-zinc-900 px-5 py-3 border border-l-0 rounded-e-full"
+      data-testid="search"
+      title="search"
+      type="submit"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2ZM3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0Z"
+        />
+      </svg>
+    </button>
+  </form>,
+  <div
+    className="absolute w-full h-full bg-white dark:bg-zinc-900 top-0 left-0"
+  />,
+]
+`;

@@ -1,46 +1,50 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BsSunFill, BsMoonFill } from 'react-icons/bs';
 import { FaYoutube, FaGithub } from 'react-icons/fa';
 import { GoSearch } from 'react-icons/go';
 import { useDarkMode } from '../context/DarkModeContext';
+import SearchArea from './SearchArea';
 
 export default function SearchHeader() {
   const { darkMode, toggleDarkMode } = useDarkMode();
-  const { keyword } = useParams();
-  const [text, setText] = useState('');
-  const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isShow, setIsShow] = useState(!isMobile);
+  const showMobileSearchArea = () => setIsShow(true);
+  const hideMobileSearchArea = () => setIsShow(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!text.trim()) return;
-    navigate(`/videos/${text.trim()}`);
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsShow(true);
+        setIsMobile(false);
+      } else {
+        setIsMobile((prev) => {
+          !prev && setIsShow(false);
+          return true;
+        });
+      }
+    };
 
-  useEffect(() => setText(keyword || ''), [keyword]);
+    window.addEventListener('resize', handleResize);
+  }, []);
 
   return (
-    <header className='w-full flex p-4 text-2xl border-b dark:border-zinc-600 mb-4 justify-between'>
+    <header className='relative w-full flex p-4 text-2xl border-b dark:border-zinc-600 mb-4 justify-between'>
       <Link to='/' className='flex items-center select-none'>
         <FaYoutube className='text-4xl text-brand' title='logo' />
         <h1 className='font-semibold ml-2 text-3xl tracking-tighter'>YouTube</h1>
       </Link>
-      <form onSubmit={handleSubmit} className='w-5/12 flex items-center'>
-        <input //
-          type='text'
-          placeholder='Search...'
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          className='w-full p-2 pl-5 outline-none border-zinc-300 dark:bg-black dark:text-gray-500 border dark:border-zinc-900 rounded-s-full'
-        />
+      <SearchArea isMobile={isMobile} isShow={isShow} handleClose={hideMobileSearchArea} />
+      <div className='flex items-center gap-4'>
         <button
-          className='bg-zinc-100 hover:bg-zinc-200 border-zinc-300 dark:bg-zinc-600 hover:dark:bg-zinc-500 dark:border-zinc-900 px-5 py-3 border border-l-0 rounded-e-full'
+          className='md:hidden' //
           title='search'
+          data-testid='mobile search'
+          onClick={showMobileSearchArea}
         >
           <GoSearch />
         </button>
-      </form>
-      <div className='flex items-center gap-4'>
         <button
           onClick={() => toggleDarkMode()}
           title='dark/light mode'

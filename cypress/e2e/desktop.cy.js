@@ -22,7 +22,7 @@ describe('YouTube App - desktop mode', () => {
   it('searches by keywords', () => {
     cy.findByPlaceholderText('Search...').type('bts');
 
-    cy.findByTitle('search').click();
+    cy.findByTestId('search').click();
 
     cy.findByText('Search Video').should('exist');
   });
