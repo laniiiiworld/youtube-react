@@ -21,7 +21,7 @@ describe('VideoCard', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  it('navigates to detailed video page with video state when clicked', () => {
+  it('navigates to detailed video page with video id state when clicked', () => {
     function LocationStateDisplay() {
       return <pre>{JSON.stringify(useLocation().state)}</pre>;
     }
@@ -37,6 +37,6 @@ describe('VideoCard', () => {
     const card = screen.getByRole('listitem');
     userEvent.click(card);
 
-    expect(screen.getByText(JSON.stringify({ video }))).toBeInTheDocument();
+    expect(screen.getByText(JSON.stringify({ videoId: video.id }))).toBeInTheDocument();
   });
 });

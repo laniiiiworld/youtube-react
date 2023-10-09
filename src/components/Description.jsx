@@ -29,7 +29,7 @@ export default function Description({ h2Ref, description }) {
         !isMore && 'cursor-pointer hover:bg-zinc-200 hover:dark:bg-zinc-700'
       }`}
     >
-      <pre ref={preRef} className={`whitespace-pre-line h-24 ${isMore ? 'h-auto' : 'line-clamp-5'}`}>
+      <pre ref={preRef} className={`overflow-x-auto whitespace-pre-line h-24 ${isMore ? 'h-auto' : 'line-clamp-5'}`}>
         {unescapeSpecialCharacters(description)}
       </pre>
       {isOverflowing && !isMore && <DescriptionToggleButton name='...더보기' handleClick={() => {}} />}

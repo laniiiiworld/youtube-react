@@ -8,7 +8,7 @@ export default function VideoCard({ video, type }) {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/videos/watch/${video.id}`, {
-      state: { video },
+      state: { videoId: video.id },
     });
   };
   const isList = type === 'list';

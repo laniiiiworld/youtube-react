@@ -12,6 +12,7 @@ export const fakeVideo = {
       },
     },
     channelTitle: 'channel title',
+    description: 'This is a description.',
   },
 };
 
@@ -30,6 +31,7 @@ export const fakeVideos = [
         },
       },
       channelTitle: 'channel title 1',
+      description: 'This is a description. 1',
     },
   },
   {
@@ -46,6 +48,7 @@ export const fakeVideos = [
         },
       },
       channelTitle: 'channel title 2',
+      description: 'This is a description. 2',
     },
   },
 ];
