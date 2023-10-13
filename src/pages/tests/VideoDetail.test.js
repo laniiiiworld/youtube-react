@@ -7,6 +7,21 @@ import { withAllContexts, withRouter } from '../../tests/utils';
 import { fakeVideo as video } from '../../tests/videos';
 import VideoDetail from '../VideoDetail';
 
+jest.mock('react-youtube', () => {
+  return () => {
+    return (
+      <iframe
+        frameBorder='0'
+        allowFullScreen='1'
+        title='title'
+        width='100%'
+        height='100%'
+        src='https://www.youtube.com/embed/videoId'
+        id='player'
+      ></iframe>
+    );
+  };
+});
 jest.mock('../../components/ChannelInfo');
 jest.mock('../../components/Description');
 jest.mock('../../components/RelatedVideos');
@@ -35,6 +50,7 @@ describe('VideoDetail', () => {
     expect(RelatedVideos.mock.calls[0][0]).toStrictEqual({ keyword: channelTitle });
     expect(Description.mock.calls[0][0].h2Ref).toBeInstanceOf(Object);
     expect(Description.mock.calls[0][0].description).toBe(description);
+    expect(Description.mock.calls[0][0].moveVideo).toBeInstanceOf(Function);
     expect(ChannelInfo.mock.calls[0][0]).toStrictEqual({
       id: channelId,
       name: channelTitle,

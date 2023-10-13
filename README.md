@@ -13,7 +13,9 @@
 - useInfiniteQuery()와 react-intersection-observer를 이용하여 무한 스크롤 구현
 - dark/light 모드 구현
 - 로딩 스켈레톤 구현
-- 상세 페이지 동영상 설명 더보기/간략히 기능 구현
+- 상세 페이지 동영상 설명
+  - 더보기/간략히 기능 구현
+  - URL/태그/타임스탬프 클릭 구현
 
 ## 사용 기술
 
@@ -31,6 +33,7 @@
 - React Icons (v4.10.1)
 - timeago.js (v4.0.2)
 - [react-intersection-observer (v9.5.2)](https://www.npmjs.com/package/react-intersection-observer)
+- [react-youtube (v10.1.0)](https://github.com/tjallingt/react-youtube)
 
 ### API
 

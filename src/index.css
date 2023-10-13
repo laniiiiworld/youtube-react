@@ -20,3 +20,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.links,
+.tags,
+.times {
+  @apply text-blue-700 dark:text-cyan-400 hover:font-semibold;
+  @apply block whitespace-nowrap overflow-hidden text-ellipsis;
+}
