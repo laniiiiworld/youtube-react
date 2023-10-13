@@ -25,5 +25,6 @@ code {
 .tags,
 .times {
   @apply text-blue-700 dark:text-cyan-400 hover:font-semibold;
-  @apply block whitespace-nowrap overflow-hidden text-ellipsis;
+  @apply inline-block align-middle max-w-full;
+  @apply whitespace-nowrap overflow-hidden text-ellipsis;
 }
